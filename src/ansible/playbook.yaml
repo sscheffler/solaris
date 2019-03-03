@@ -1,0 +1,42 @@
+- name: Build and deploy application
+  hosts: localhost
+  connection: local
+  vars:
+    docker_image_name: "solaris"
+    home: "../.."
+  tasks:
+    - name: Pull latest from git
+      command: "git pull origin master"
+
+    - name: Build artifact
+      command: "mvn clean install -f {{ home }}/pom.xml -Ddockerfile.build.skip=true"
+
+    - name: Build docker image
+      command: "mvn dockerfile:build -f {{ home }}/pom.xml"
+
+    - name: Mongo Container present
+      docker_container:
+        name: "mongo"
+        image: "tutum/mongodb"
+        state: started
+        exposed_ports:
+         - "27017:27017"
+
+    - name: Solaris Container
+      docker_container:
+        name: "{{ docker_image_name }}"
+        image: "solarsystem/solaris:latest"
+        recreate: "yes"
+        ports:
+          - "9000:8080"
+        links:
+          - "mongo:mongo"
+
+
+
+
+    #- name: Stop docker image
+    #  command: "docker stop {{ imagae_name }}"
+    #
+    #- name: Remove image
+    #  command
