@@ -19,6 +19,14 @@ HELP.md
 *.ipr
 **/*.retry
 
+###frontend
+**/node_modules/
+**/dist/
+**/etc/
+**/node/
+package-lock.json
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
