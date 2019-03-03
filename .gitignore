@@ -26,6 +26,8 @@ HELP.md
 **/node/
 package-lock.json
 
+**/image-id
+**/jar
 
 ### NetBeans ###
 /nbproject/private/

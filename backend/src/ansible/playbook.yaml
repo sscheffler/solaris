@@ -3,9 +3,9 @@
   # connection: local
 
   vars:
-    docker_image_name: "solaris"
-    home: "../.."
+    DOCKER_IMAGE_NAME: "solaris"
     HOME: "/tmp/solaris"
+    BACKEND_HOME: "{{ HOME }}/backend"
   tasks:
     - name: Clear path
       file:
@@ -29,10 +29,10 @@
     #    - docker-compose==1.9.0
 
     - name: Build artifact
-      command: "mvn clean install -f {{ HOME }}/pom.xml -Ddockerfile.build.skip=true"
+      command: "mvn clean install -f {{ BACKEND_HOME }}/pom.xml -Ddockerfile.build.skip=true"
 
     - name: Build docker image
-      command: "mvn dockerfile:build -f {{ HOME }}/pom.xml"
+      command: "mvn dockerfile:build -f {{ BACKEND_HOME }}/pom.xml"
 
     - name: Mongo Container present
       docker_container:
@@ -44,7 +44,7 @@
 
     - name: Solaris Container
       docker_container:
-        name: "{{ docker_image_name }}"
+        name: "{{ DOCKER_IMAGE_NAME }}"
         image: "solarsystem/solaris:latest"
         recreate: "yes"
         ports:
