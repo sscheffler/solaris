@@ -36,7 +36,7 @@
         image: "solarsystem/solaris:latest"
         recreate: "yes"
         ports:
-          - "9000:8080"
+          - "8100:8080"
         links:
           - "mongo:mongo"
 
