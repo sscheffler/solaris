@@ -1,0 +1,5 @@
+all:
+  hosts:
+    localhost:
+    environment:
+      PYTHONPATH: "/home/sscheffler/.local/lib/python3.6/site-packages/"
