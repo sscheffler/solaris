@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: de.moving.turtle.SolarisApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.955 s - in de.moving.turtle.SolarisApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.473 s - in de.moving.turtle.SolarisApplicationTests
